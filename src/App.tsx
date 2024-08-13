@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
+import Header from './components/Header';
+import Counter from './components/Counter';
 
 const INCREMENT_MUTATION = gql`
   mutation Mutation {
@@ -32,6 +34,8 @@ function App() {
 
   return (
     <>
+      <Header />
+      <Counter />
       <div className="card">
         <button onClick={handleLogin}>
           Increment
