@@ -1,46 +1,14 @@
-import { useState } from 'react';
-import { gql, useMutation } from '@apollo/client';
 import Header from './components/Header';
 import Counter from './components/Counter';
 
-const INCREMENT_MUTATION = gql`
-  mutation Mutation {
-  increment
-}
-`;
-
 function App() {
 
-  const [count, setCount] = useState(0)
-
-  const [increment, { loading, error, data }] = useMutation(INCREMENT_MUTATION);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: Hubo un problema al conectar </p>;
-  console.log(data)
-
-  const handleLogin = async () => {
-
-
-    try {
-      const { data } = await increment();
-
-      // Manejar la respuesta de la mutación
-      console.log(data);
-      setCount(data?.increment)
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
 
   return (
     <>
       <Header />
-      <Counter />
-      <div className="card">
-        <button onClick={handleLogin}>
-          Increment
-        </button>
-        <p>{count}</p>
+      <div className='container my-3'>
+        <Counter />
       </div>
     </>
   )
